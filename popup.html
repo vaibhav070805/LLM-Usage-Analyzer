@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LLM Usage Report</title>
+  <style>
+    body {
+      width: 320px;
+      margin: 0;
+      padding: 12px;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    h2, h4 {
+      margin: 6px 0;
+      color: #ffffff;
+    }
+
+    .section {
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    p {
+      margin: 4px 0;
+      font-size: 13px;
+    }
+
+    span {
+      color: #90caf9;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 6px 0;
+    }
+
+    li {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .original {
+      font-style: italic;
+      color: #ffcc80;
+      font-size: 12px;
+    }
+
+    .improved {
+      color: #81c784;
+      font-size: 12px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: 1px solid #333;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #2a2a2a;
+    }
+
+    .muted {
+      color: #9e9e9e;
+      font-size: 11px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>LLM Usage Report</h2>
+
+  <div class="section">
+    <label>
+      <input type="checkbox" id="trackingToggle" />
+      Enable Prompt Tracking
+    </label>
+  </div>
+
+  <div class="section">
+    <p><b>Total Prompts:</b> <span id="total"></span></p>
+    <p><b>Avg Prompt Length:</b> <span id="avgLength"></span></p>
+    <p><b>ChatGPT:</b> <span id="chatgpt"></span> | <b>Gemini:</b> <span id="gemini"></span></p>
+  </div>
+
+  <div class="section">
+    <p><b>Prompt Quality Score:</b> <span id="quality"></span>/100</p>
+    <p><b>Learning / Execution:</b> <span id="learnExec"></span></p>
+  </div>
+
+  <div class="section">
+    <p><b>Direct Code Requests:</b> <span id="directCodeCount"></span></p>
+    <p class="muted">
+    Detected when prompts ask for solutions without learning intent.
+    </p>
+  </div>
+
+  <div id="directCodeWarning" class="section" style="display:none;">
+  <p style="color:#ffab91; font-weight:bold;">
+    ⚠️ Think twice before copying code
+  </p>
+  <p class="muted">
+    Try asking for intuition or approach to improve learning.
+  </p>
+</div>
+
+  <div class="section">
+    <h4>Prompt Complexity</h4>
+    <p>Simple: <span id="simple"></span></p>
+    <p>Medium: <span id="medium"></span></p>
+    <p>Complex: <span id="complex"></span></p>
+  </div>
+
+  <div class="section">
+    <p><b>Prompt Refinement:</b> <span id="refine"></span>%</p>
+    <p><b>Repetitions:</b> <span id="repeat"></span></p>
+  </div>
+
+  <div class="section">
+    <h4>Prompt Improvement Coach</h4>
+    <p class="muted">Your last prompt:</p>
+    <p class="original" id="originalPrompt"></p>
+    <p class="muted">Improved version:</p>
+    <p class="improved" id="improvedPrompt"></p>
+  </div>
+
+  <div class="section" id="supportSection" style="display:none;">
+    <h4>Supportive Insight</h4>
+    <button id="supportBtn">Get Supportive Feedback</button>
+    <p class="muted">This sends your last prompt to Gemini only when you click.</p>
+    <p id="supportResponse"></p>
+  </div>
+
+  
+
+  <button id="clear">Clear All Data</button>
+
+  <button id="weeklyWrapBtn">View Weekly Learning Wrap</button>
+
+  
+  <p class="muted">
+    CSV is downloaded locally. Import it into Google Sheets to save in Drive.
+  </p>
+  <button id="notebookBtn" style="margin-top:8px;">
+    Analyze in NotebookLM
+  </button>
+
+  <p class="muted" style="margin-top:4px;">
+    NotebookLM analyzes your uploaded syllabus, notes, or weekly wrap documents.
+
+  </p>
+  <div class="section">
+  
+
+  
+
+
+  <script src="popup.js"></script>
+</body>
+</html>
