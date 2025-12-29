@@ -1,6 +1,6 @@
 # LLM Usage Analyzer
 
-## Note :-This the copy of the repositiory in order to hide API calls.
+## Note :-This the copy of the repositiory in order to hide API key privacy.
 
 ## Overview
 A Chrome extension that analyzes how users interact with LLMs and provides real-time usage feedback.
